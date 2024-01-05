@@ -1,0 +1,56 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LandingPageComponent } from './shared/pages/landing-page/landing-page.component';
+import { PageHeaderComponent } from './shared/components/page-header/page-header.component';
+import { PageFooterComponent } from './shared/components/page-footer/page-footer.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { ChipsInputComponent } from './shared/components/chips-input/chips-input.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { NgxColorsModule } from 'ngx-colors';
+import { MatSliderModule } from '@angular/material/slider';
+import { SnackBarComponent } from './shared/components/snack-bar/snack-bar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LandingPageComponent,
+    PageHeaderComponent,
+    PageFooterComponent,
+    ChipsInputComponent,
+    SnackBarComponent,
+    NavBarComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatRadioModule,
+    MatChipsModule,
+    MatIconModule,
+    NgxColorsModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

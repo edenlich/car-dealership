@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    padding-bottom: 4px;
+    .text {
+        font-size: 14px;
+        margin: 0 4px 0 8px;
+        color: #C21807;
+    }
+}

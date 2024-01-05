@@ -1,0 +1,149 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    .form-wrapper {
+        width: 50%;
+        .title {
+            font-size: 18px;
+            margin: 18px 12px;
+        }
+        form {
+            margin-left: 12px;
+            .container-1 {
+                display: flex;
+                .container-3 {
+                    display: flex;
+                    flex-direction: column;
+                    width: 70%;
+                    .input-container.name {
+                        .input {
+                            width: 100%;
+                        }
+                    }
+                    .date {
+                        width: 100%;
+                        .input-wrapper {
+                            display: flex;
+                            align-items: center;
+                            border: 1px solid black;
+                            position: relative;
+                            height: 20px;
+                            padding: 4px 0 4px 3px;
+                            .input {
+                                border: none;
+                                outline: none;
+                            }
+                            .date-picker {
+                                position: absolute;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+                .gender {
+                    margin-left: 22px;
+                    .radio-group {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+
+            .container-2 {
+                display: flex;
+                padding-right: 5px;
+                margin-top: 18px;
+                .input-container {
+                    width: 45%;
+                    .input {
+                        width: 100%;
+                    }
+                }
+                .city {
+                    margin-right: 15px;
+                }
+            }
+
+            .container-4 {
+                margin-top: 18px;
+                .pallete-container {
+                    display: flex;
+                    border: 1px solid black;
+                    position: relative;
+                    height: 20px;
+                    padding: 4px;
+                    align-items: center;
+                    .input {
+                        border: none;
+                        outline: none;
+                    }
+                    .palette-button {
+                        color: rgb(121, 85, 72);
+                        opacity: 1;
+                        position: absolute;
+                        right: 8px;
+                        top: 8%;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .container-5 {
+                margin-top: 18px;
+                display: flex;
+                .seats {
+                    width: 100%;
+                    .slider {
+                        width: 90%;
+                    }
+                }
+            }
+
+            .input-container {
+                margin: 4px;
+                .text {
+                    font-size: 12px;
+                }
+                .input {
+                    width: 69%;
+                    height: 20px;
+                    outline: none;
+                    padding: 4px;
+                }
+            }
+        }
+
+        .submit-button {
+            background-color: rgba(46, 139, 87, 1);
+            height: 30px;
+            width: 80px;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            &:disabled {
+                background-color: rgba(46, 139, 87, 0.4);
+                border-color: rgba(46, 139, 87, 0.5);
+                cursor: auto;
+            }
+        }
+    }
+    .image-wrapper {
+        width: 50%;
+        margin-top: 12px;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+::ng-deep {
+    .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
+        border-color: #3f51b5 !important;
+    }
+    .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+        background-color: #3f51b5 !important;
+    }
+    .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle {
+        border-color: #3f51b5 !important;
+    }
+}
