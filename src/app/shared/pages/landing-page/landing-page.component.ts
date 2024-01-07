@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { DateValidator } from '../../../core/validators/date-validator.validator';
 import { QuizService } from '../../../core/services/quiz.service';
 import { QuizData } from '../../../core/models/quiz-data.model';
 import { Gender } from '../../../core/models/gender.model';
 import { MotorType } from '../../../core/models/motor-type.model';
 import { SnackBarComponent } from '../../components/snack-bar/snack-bar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -33,6 +34,37 @@ export class LandingPageComponent {
   readonly durationInSeconds = 5;
 
   constructor(private fb: FormBuilder, private quizService: QuizService, private _snackBar: MatSnackBar) {
+  }
+
+  onSubmit() {
+    const quizData: QuizData = this.createQuizData();
+    this.quizService.saveQuizData(quizData).pipe(untilDestroyed(this)).subscribe((d) => {
+      this.openSnackBar();
+    });
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
+  createQuizData(): QuizData {
+    return {
+      name: this.name?.value as string,
+      gender: this.gender?.value as Gender,
+      email: this.email?.value as string,
+      birthdate: new Date(this.birthdate?.value as string),
+      location: {
+        city: this.city?.value as string,
+        country: this.country?.value as string,
+        address: this.address?.value as string,
+      },
+      hobbies: this.hobbies.value,
+      color: this.color?.value as string,
+      seats: Number(this.seats?.value),
+      motor: this.motor?.value as MotorType,
+    };
   }
 
   get name() {
@@ -77,36 +109,5 @@ export class LandingPageComponent {
 
   get motor() {
     return this.BuyerDetailsForm.get('motor');
-  }
-
-  onSubmit() {
-    const quizData: QuizData = this.createQuizData();
-    this.quizService.saveQuizData(quizData).subscribe((d) => {
-      this.openSnackBar();
-    });
-  }
-
-  openSnackBar() {
-    this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: this.durationInSeconds * 1000,
-    });
-  }
-
-  createQuizData(): QuizData {
-    return {
-      name: this.name?.value as string,
-      gender: this.gender?.value as Gender,
-      email: this.email?.value as string,
-      birthdate: new Date(this.birthdate?.value as string),
-      location: {
-        city: this.city?.value as string,
-        country: this.country?.value as string,
-        address: this.address?.value as string,
-      },
-      hobbies: this.hobbies.value,
-      color: this.color?.value as string,
-      seats: Number(this.seats?.value),
-      motor: this.motor?.value as MotorType,
-    };
   }
 }
